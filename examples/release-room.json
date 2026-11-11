@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "title": "Release room",
+  "description": "One place to see the work that needs a decision.",
+  "query": {"filters": [], "sort": [{"field": "due", "direction": "asc"}], "limit": 100},
+  "widgets": [
+    {"id": "pulse", "type": "metrics", "title": "The big picture", "metrics": [
+      {"label": "Open tasks", "op": "count"},
+      {"label": "Overdue", "op": "count", "filters": [{"field": "is_overdue", "op": "eq", "value": true}]},
+      {"label": "Without an owner", "op": "count", "filters": [{"field": "owner_id", "op": "eq", "value": 0}]}
+    ]},
+    {"id": "workload", "type": "bar_chart", "title": "Workload by owner", "group_by": "owner", "measure": "effort"},
+    {"id": "attention", "type": "table", "title": "Make the next move", "columns": ["title", "project", "owner", "due", "effort"], "group_by": "owner", "actions": ["reassign", "set_due"]}
+  ]
+}
