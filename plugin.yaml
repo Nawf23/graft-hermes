@@ -1,0 +1,26 @@
+name: graft
+version: 0.1.0
+manifest_version: 2
+api_version: 1
+description: Create persistent working features inside a supported web app from ordinary language.
+author: Graft contributors
+license: MIT
+requires_hermes: ">=0.23.0"
+tags: [desktop, browser, productivity, generative-ui]
+provides_tools: [graft_capabilities, graft_data, graft_publish, graft_list]
+provides_hooks: []
+config_schema:
+  kanboard_url:
+    type: str
+    default: "http://127.0.0.1:8460"
+    label: Kanboard address
+    description: The app address opened in Hermes Browser. Use the SSH tunnel address for a VPS.
+  kanboard_user:
+    type: str
+    default: graft
+    label: Kanboard username
+  kanboard_token:
+    type: secret
+    env: GRAFT_KANBOARD_TOKEN
+    label: Kanboard personal API token
+    description: Set this in Hermes settings; never put it in a chat message.
